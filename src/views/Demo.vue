@@ -1,8 +1,13 @@
 <template>
   <div>
-    Demo
+    <!-- Demo
     <br />
     {{msg}}
+    Nested routers:
+    <router-link to="/demo/left">Left</router-link>|
+    <router-link to="/demo/right">Right</router-link>
+    <router-view />-->
+    ??????
   </div>
 </template>
 

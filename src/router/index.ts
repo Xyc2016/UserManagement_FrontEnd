@@ -1,12 +1,14 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Demo from "../views/Demo.vue"
 import NotFound from "../views/NotFound.vue";
+import Left from "../views/Left.vue";
+import Right from "../views/Right.vue";
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
@@ -20,8 +22,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }, {
-    path: '/demo/:id/name/:name',
+    path: '/demo',
     component: Demo,
+    children: [
+      { path: 'left', component: Left },
+      { path: 'Right', component: Right },
+    ]
   }, {
     path: '*',
     component: NotFound,
