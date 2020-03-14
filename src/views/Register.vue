@@ -2,7 +2,7 @@
   <div>
     <el-input v-model="username"></el-input>
     <el-input v-model="password"></el-input>
-    <el-button type="primary" @click="logIn">Log In</el-button>
+    <el-button type="primary" @click="register">注册</el-button>
   </div>
 </template>
 
@@ -12,12 +12,17 @@ import { Vue, Component } from "vue-property-decorator";
 import axios from "axios";
 @Component
 export default class LogIn extends Vue {
-  public username = "superuser";
-  public password = "password";
-  public logIn(): void {
+  public username = "theName";
+  public password = "thePassword";
+  public register(): void {
+    if (this.username?.length < 6 || this.password?.length < 6) {
+      this.$message("用户名或密码太短");
+      return;
+    }
+    console.log("?");
     axios
       .post(
-        "http://127.0.0.1:8000/log_in",
+        "http://127.0.0.1:8000/register",
         {
           username: this.username,
           password: this.password
@@ -29,16 +34,7 @@ export default class LogIn extends Vue {
         }
       )
       .then(value => {
-        const data = value.data;
-        console.log(data);
-        if (data.hasLoggedIn) {
-          this.$router.push({
-            path: "/personal_home"
-          });
-        }
-      })
-      .catch(reason => {
-        console.log(reason);
+        console.log(value);
       });
   }
   public created(): void {

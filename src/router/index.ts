@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
-import Demo from "../views/Demo.vue"
 import NotFound from "../views/NotFound.vue";
-import Left from "../views/Left.vue";
-import Right from "../views/Right.vue";
 import LogIn from "@/views/LogIn.vue";
-import Profile from "@/views/Profile.vue";
+import PersonalHome from "@/views/PersonalHome.vue";
+import Register from "@/views/Register.vue";
+import LogOut from "@/views/LogOut.vue";
 Vue.use(VueRouter)
 
 const routes: RouteConfig[] = [
@@ -23,22 +22,26 @@ const routes: RouteConfig[] = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }, {
-    path: '/demo',
-    component: Demo,
-    children: [
-      { path: 'left', component: Left },
-      { path: 'Right', component: Right },
-    ]
-  }, {
     path: '/log_in',
     name: "LogIn",
     component: LogIn
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile,
-  }, {
+    path: '/personal_home',
+    name: 'PersonalHome',
+    component: PersonalHome,
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+  },
+  {
+    path: '/log_out',
+    name: 'LogOut',
+    component: LogOut,
+  },
+  {
     path: '*',
     component: NotFound,
   }
