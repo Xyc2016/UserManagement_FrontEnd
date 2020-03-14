@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-input v-model="username"></el-input>
-    <el-input v-model="password"></el-input>
+    <el-input v-model="password" type="password"></el-input>
     <el-button type="primary" @click="logIn">Log In</el-button>
   </div>
 </template>
@@ -12,8 +12,8 @@ import { Vue, Component } from "vue-property-decorator";
 import axios from "axios";
 @Component
 export default class LogIn extends Vue {
-  public username = "superuser";
-  public password = "password";
+  public username = "";
+  public password = "";
   public logIn(): void {
     axios
       .post(
@@ -33,7 +33,7 @@ export default class LogIn extends Vue {
         console.log(data);
         if (data.hasLoggedIn) {
           this.$router.push({
-            path: "/personal_home"
+            name: "PersonalHome"
           });
         }
       })
@@ -45,7 +45,7 @@ export default class LogIn extends Vue {
     axios.defaults.withCredentials = true;
   }
   public mounted(): void {
-    window.axios = axios;
+    // window.axios = axios;
   }
 }
 </script>
