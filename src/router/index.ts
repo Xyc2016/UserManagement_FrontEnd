@@ -6,6 +6,7 @@ import LogIn from "@/views/LogIn.vue";
 import PersonalHome from "@/views/PersonalHome.vue";
 import Register from "@/views/Register.vue";
 import LogOut from "@/views/LogOut.vue";
+import Demo from "@/views/Demo.vue";
 Vue.use(VueRouter)
 
 const routes: RouteConfig[] = [
@@ -40,6 +41,11 @@ const routes: RouteConfig[] = [
     path: '/log_out',
     name: 'LogOut',
     component: LogOut,
+  },
+  {
+    path: '/demo',
+    name: 'Demo',
+    component: Demo,
   },
   {
     path: '*',
