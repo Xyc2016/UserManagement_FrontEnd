@@ -1,24 +1,29 @@
 <template>
   <div>
-    <!-- Demo
-    <br />
-    {{msg}}
-    Nested routers:
-    <router-link to="/demo/left">Left</router-link>|
-    <router-link to="/demo/right">Right</router-link>
-    <router-view />-->
-    ??????
+    {{info}}
+    <el-button type="primary" @click="sendRequest">Send request</el-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import axios from "axios";
+const url = "http://127.0.0.1:8001/get_and_set_cookie";
 @Component
 export default class Demo extends Vue {
-  public msg = "";
+  public info = "Info";
+  public sendRequest(): void {
+    axios
+      .get(url)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(reason => {
+        console.log(reason);
+      });
+  }
   public created(): void {
-    console.log(this.$route.params);
+    axios.defaults.withCredentials = true;
   }
 }
 </script>

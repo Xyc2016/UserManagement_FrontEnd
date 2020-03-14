@@ -5,7 +5,8 @@ import Demo from "../views/Demo.vue"
 import NotFound from "../views/NotFound.vue";
 import Left from "../views/Left.vue";
 import Right from "../views/Right.vue";
-
+import LogIn from "@/views/LogIn.vue";
+import Profile from "@/views/Profile.vue";
 Vue.use(VueRouter)
 
 const routes: RouteConfig[] = [
@@ -28,6 +29,15 @@ const routes: RouteConfig[] = [
       { path: 'left', component: Left },
       { path: 'Right', component: Right },
     ]
+  }, {
+    path: '/log_in',
+    name: "LogIn",
+    component: LogIn
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
   }, {
     path: '*',
     component: NotFound,
